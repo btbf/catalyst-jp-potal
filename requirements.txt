@@ -1,1 +1,1 @@
-pip install snowflake-snowpark-python
+snowflake-snowpark-python
