@@ -42,7 +42,7 @@ with st.container():
         #on_change=re_query,
         #placeholder="カテゴリを選択してください",
     )
-    serch_text = col5.text_input(label='検索',placeholder='aaa')
+    #serch_text = col5.text_input(label='検索',placeholder='aaa')
     # '表示件数',
     # ['10', '20', '30', '40', '50', '100'],
     # index=0,
@@ -81,7 +81,6 @@ st.info(subheader)
 
 sql = f"""SELECT * FROM proposals
 WHERE CHALLENGE_ID = {cat_id}
-(SELECT * FROM proposals PROBLEM LIKE ('%'{serch_text}'%'))
 ;"""
 
 
