@@ -1,6 +1,6 @@
 SET_PAGE_CONFIG = {
     "page_title": "カタリスト提案日本語ポータルサイト",
-    "page_icon": "😀",
+    "page_icon": "🗳️",
     "layout": "wide",
 }
 
