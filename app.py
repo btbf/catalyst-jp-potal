@@ -20,7 +20,7 @@ with st.expander("はじめにお読みください"):
         これから本格的なポータルサイト開発に向けてFund12へ提案を提出予定です。
     """)
 
-st.subheader("Fund11")
+st.subheader("Catalyst Fund11 - 投票締切：2024年2月8日 16:00(日本時間)")
 
 # Initialize connection.
 conn = st.connection("snowflake")
