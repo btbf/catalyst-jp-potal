@@ -7,7 +7,7 @@ import const
 #from st_aggrid.shared import JsCode
 
 st.set_page_config(**const.SET_PAGE_CONFIG)
-#st.markdown(const.HIDE_ST_STYLE, unsafe_allow_html=True)
+st.markdown(const.HIDE_ST_STYLE, unsafe_allow_html=True)
 
 #st.set_page_config(
 #    layout="wide"
