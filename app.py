@@ -20,6 +20,8 @@ with st.expander("はじめにお読みください"):
         これから本格的なポータルサイト開発に向けてFund12へ提案を提出予定です。
     """)
 
+st.subheader("Fund11")
+
 # Initialize connection.
 conn = st.connection("snowflake")
 #sql = "SELECT * from proposals WHERE CHALLENGE_ID = 130 FETCH FIRST 10 ROWS ONLY;"
