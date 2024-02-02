@@ -81,6 +81,7 @@ st.info(subheader)
 
 sql = f"""SELECT * FROM proposals
 WHERE CHALLENGE_ID = {cat_id}
+(SELECT * FROM proposals PROBLEM LIKE ('%'{serch_text}'%'))
 ;"""
 
 
