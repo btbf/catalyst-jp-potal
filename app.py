@@ -105,7 +105,7 @@ for row in df.itertuples():
                 #st.write(f"{row.PROBLEM}")
                 st.caption(f"解決策：{row.SOLUTION}")
                 #st.write(f"{row.SOLUTION}")
-                st.link_button("提案詳細ページを見る",f"{row.LINK}",type="primary")
+                st.link_button("提案詳細ページを見る",f"{row.IDEASCALE_LINK}",type="primary")
             
             with col2.container():
                 st.warning("レビュアー評価")
