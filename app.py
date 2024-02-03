@@ -1,10 +1,6 @@
 import streamlit as st
 import numpy as np
 import const
-#import pandas as pd
-#from st_aggrid import AgGrid
-#from st_aggrid.grid_options_builder import GridOptionsBuilder
-#from st_aggrid.shared import JsCode
 
 st.set_page_config(**const.SET_PAGE_CONFIG)
 st.markdown(const.HIDE_ST_STYLE, unsafe_allow_html=True)
@@ -13,23 +9,17 @@ st.markdown(const.HIDE_ST_STYLE, unsafe_allow_html=True)
 #    layout="wide"
 #)
 
-st.title("カタリスト提案日本語ポータルサイト v0.1-α")
+st.title("カタリスト提案日本語ポータルサイト v0.1.1-α")
 with st.expander("はじめにお読みください"):
     st.write("""
-        カタリスト提案の日本語ポータルサイト構築に向けて、取り急ぎ無料で出来る範囲で構築したため現時点ではタイトル・課題・解決策を日本語で読める程度になってます。\n
-        これから本格的なポータルサイト開発に向けてFund12へ提案を提出予定です。\n
-        改善提案・ご要望などございましたら、<a href=https://twitter.com/btbfpark>BTBF</a>までご連絡ください。
-        \n
-        * v0.1 2024/2/3
-    """,unsafe_allow_html=True)
-    
+        カタリスト提案の日本語ポータルサイト構築に向けて取り急ぎ無料で出来る範囲で構築しました。
+        これから本格的なポータルサイト開発に向けてFund12へ提案を提出予定です。
+    """)
 
 st.subheader("Catalyst Fund11 - 投票締切：2024年2月8日 20:00(日本時間)")
 
 # Initialize connection.
 conn = st.connection("snowflake")
-#sql = "SELECT * from proposals WHERE CHALLENGE_ID = 130 FETCH FIRST 10 ROWS ONLY;"
-#sql = "SELECT * from proposals FETCH FIRST 10 ROWS ONLY;"
 
 @st.cache_resource
 def load_data(sql):
@@ -86,7 +76,7 @@ st.info(subheader)
 #st.write(f"{cat_id}")
 
 sql = f"""SELECT * FROM proposals
-WHERE CHALLENGE_ID = {cat_id}
+WHERE CHALLENGE_ID = {cat_id} 
 ;"""
 
 
@@ -98,32 +88,26 @@ for row in df.itertuples():
         
         with st.container():
             # st.info(f"{row.TITLE}",icon="ℹ️")
-            st.subheader(f"{row.TITLE})",divider="rainbow")
+            st.subheader(f"{row.TITLE}",divider="rainbow")
             col1, col2 = st.columns([3, 2]) 
             with col1.container():
                 st.caption(f"課題：{row.PROBLEM}")
                 #st.write(f"{row.PROBLEM}")
                 st.caption(f"解決策：{row.SOLUTION}")
                 #st.write(f"{row.SOLUTION}")
-                st.link_button("提案詳細ページを見る",f"{row.IDEASCALE_LINK}",type="primary")
+                col7,col8,col9 = st.columns([1.2,1.5,3])
+                col7.link_button("IDEASCALEで見る",f"{row.IDEASCALE_LINK}",type="primary")
+                col8.link_button("LIDONATIONで見る",f"{row.LINK}",type="primary")
+                amount_style = f"要求額：<span style=\"color:#CB4335; font-size:1.5em;\">{row.AMOUNT_REQUESTED:,} ADA</p>"
+                col9.markdown(amount_style, unsafe_allow_html=True)
             
             with col2.container():
                 st.warning("レビュアー評価")
                 col3, col4 = st.columns([1, 2])
                 col3.write("総合評価")
                 #col3.write(f"{row.AVG_SCORE}/5",unsafe_allow_html=True)
-                new_title = f"<p style=\"font-family:sans-serif; color:Green; font-size: 42px;\">{row.AVG_SCORE}/5</p>"
+                new_title = f"<p style=\"color:Green; font-size: 42px;\">{row.AVG_SCORE}/5</p>"
                 col3.markdown(new_title, unsafe_allow_html=True)
                 col4.write(f"エコシステム影響度：<span style=\"color:red;\">{row.ALIGNMENT_SCORE}/5</span>",unsafe_allow_html=True)
                 col4.write(f"実現可能性：<span style=\"color:red;\">{row.FEASIBILITY_SCORE}/5</span>",unsafe_allow_html=True)
                 col4.write(f"コストパフォーマンス：<span style=\"color:red;\">{row.AUDITABILITY_SCORE}/5</span>",unsafe_allow_html=True)
-
-
-
-
-    #st.session_state.select_category
-    #return df
-
-#st.write('You selected:', options)
-
-
