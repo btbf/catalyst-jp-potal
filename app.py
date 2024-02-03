@@ -24,7 +24,7 @@ with st.expander("はじめにお読みください"):
     """,unsafe_allow_html=True)
     
 
-st.subheader("Catalyst Fund11 - 投票締切：2024年2月8日 16:00(日本時間)")
+st.subheader("Catalyst Fund11 - 投票締切：2024年2月8日 20:00(日本時間)")
 
 # Initialize connection.
 conn = st.connection("snowflake")
